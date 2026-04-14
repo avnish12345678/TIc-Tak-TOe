@@ -1,0 +1,14 @@
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Vite SPA: client-side routes / hard refresh → serve index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
