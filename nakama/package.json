@@ -1,0 +1,13 @@
+{
+  "name": "nakama-tictactoe-runtime",
+  "private": true,
+  "scripts": {
+    "build": "esbuild src/main.ts --bundle --platform=neutral --target=es2020 --format=cjs --outfile=modules/index.js --banner:js=\"var module=module||{exports:{}};var exports=module.exports;\" --footer:js=\"globalThis.InitModule=module.exports.InitModule;\"",
+    "watch": "npm run build -- --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.2",
+    "nakama-runtime": "github:heroiclabs/nakama-common#master",
+    "typescript": "^5.8.3"
+  }
+}

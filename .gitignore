@@ -1,0 +1,7 @@
+node_modules/
+frontend/dist/
+frontend/tsconfig.tsbuildinfo
+nakama/node_modules/
+.env
+*.log
+.DS_Store

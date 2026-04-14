@@ -1,0 +1,17 @@
+# Local Docker Compose — merged with Nakama defaults.
+# CORS: browser dev server (e.g. localhost:5173) calls API on :7350 (different port = cross-origin).
+name: nakama1
+logger:
+  level: INFO
+session:
+  token_expiry_sec: 7200
+database:
+  address:
+    - "postgres:localdev_change_me@postgres:5432/nakama"
+match:
+  input_queue_size: 512
+  call_queue_size: 512
+socket:
+  server_key: defaultkey
+  # response_headers omitted — some Nakama builds mis-handle YAML maps here and return 500 on all HTTP.
+  # Local dev uses the Vite proxy (same-origin); for direct browser→7350, add CORS on a reverse proxy instead.
