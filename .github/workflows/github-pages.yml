@@ -1,5 +1,10 @@
 # Deploy the Vite frontend to GitHub Pages.
 # Nakama + Postgres still run on a VPS / cloud VM (or Heroic Cloud); set repo secrets below.
+#
+# If you see "There isn't a GitHub Pages site here":
+# 1) Repo → Settings → Pages → Source = "GitHub Actions"
+# 2) Add all four VITE_* secrets (Actions tab will fail the build until they exist)
+# 3) Open: https://<owner>.github.io/<exact-repo-name>/  (copy repo name from the repo title bar)
 
 name: Deploy frontend to GitHub Pages
 
@@ -40,6 +45,10 @@ jobs:
             echo "::error::Add these repository secrets (Settings → Secrets and variables → Actions):$missing"
             exit 1
           fi
+
+      - name: Expected site URL
+        run: |
+          echo "Project Pages URL (after a green deploy): https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
 
       - name: Install and build
         env:
